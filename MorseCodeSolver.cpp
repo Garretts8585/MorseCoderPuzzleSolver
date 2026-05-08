@@ -124,7 +124,7 @@ MorseDecoder::MorseDecoder() {
     MorseTrieTree.AddString(".--", 'w');
     MorseTrieTree.AddString("-..-", 'x');
     MorseTrieTree.AddString("-.--", 'y');
-    MorseTrieTree.AddString("--..", 'x');
+    MorseTrieTree.AddString("--..", 'z');
 }
 
 MorseDecoder::MorseDecoder(const std::string& InDictionaryFileName)
