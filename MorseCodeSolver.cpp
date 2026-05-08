@@ -122,9 +122,9 @@ MorseDecoder::MorseDecoder() {
     MorseTrieTree.AddString("..-", 'u');
     MorseTrieTree.AddString("...-", 'v');
     MorseTrieTree.AddString(".--", 'w');
-    MorseTrieTree.AddString("-.--", 'x');
+    MorseTrieTree.AddString("-..-", 'x');
     MorseTrieTree.AddString("-.--", 'y');
-    MorseTrieTree.AddString("--..", 'y');
+    MorseTrieTree.AddString("--..", 'x');
 }
 
 MorseDecoder::MorseDecoder(const std::string& InDictionaryFileName)
@@ -200,7 +200,7 @@ void MorseDecoder::MultiDecode_Req(const std::string& InString, std::string& Cur
     unsigned int CurrentIndex = StringStart;
     const MorseCodeTrieNode* CurrentMCNode = MorseTrieTree.GetRoot();
 
-    while (CurrentMCNode && CurrentIndex <= StringEnd) 
+    while (CurrentMCNode && CurrentIndex <= StringEnd && CurrentString.size() < MaxReturnSize)
     {
         // Traverse word tree reqursively trying each morse code letter possible from our current index
         CurrentMCNode = static_cast<const MorseCodeTrieNode*>(CurrentMCNode->GetNextNode(InString[CurrentIndex]));
